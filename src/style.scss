@@ -1,0 +1,103 @@
+$font-family: "Open Sans", sans-serif;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$text-color: #333333;
+$form-text-color: #34bfbc;
+$disabled-text-color: #909090;
+$subtext-color: #d3d3d3;
+$disabled-text: #a1a1a1;
+$header-color: #ffffff;
+$form-panel-bg: #f2f2f2;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  background: url("./assets/bg.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+  color: $header-color;
+  overflow-x: hidden;
+}
+
+section:first-of-type {
+  text-align: center;
+  margin-top: 5rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 1rem;
+    color: $header-color;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: $font-weight-medium;
+    margin: 0.5rem 0;
+    color: $subtext-color;
+  }
+}
+
+section:nth-of-type(2) {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba($form-panel-bg, 0.9);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 70%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  .dropdown-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .dropdown {
+    flex: 1;
+    margin: 0 1rem;
+    text-align: center;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: $font-weight-bold;
+      color: $form-text-color;
+      margin-bottom: 0.5rem;
+    }
+
+    label {
+      font-size: 1rem;
+      font-weight: $font-weight-medium;
+      color: $text-color;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    select {
+      width: 75%;
+      padding: 0.8rem;
+      border: 1px solid $subtext-color;
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      color: $text-color;
+      background-color: $form-panel-bg;
+
+      &:focus {
+        border-color: $form-text-color;
+        box-shadow: 0 0 5px rgba($form-text-color, 0.5);
+      }
+
+      &:disabled {
+        color: $disabled-text;
+        background-color: $subtext-color;
+      }
+    }
+  }
+}
