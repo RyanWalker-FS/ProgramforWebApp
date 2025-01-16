@@ -1,0 +1,62 @@
+$card-width: 110px;
+$card-height: 150px;
+$card-radius: 8px;
+$card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+$card-flipped-bg: #28a745;
+$button-bg-color: #238ab6;
+$button-text-color: white;
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 400; // Medium weight for the body text
+  text-align: center;
+  background-color: #1c531d;
+  color: white;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(3, $card-width);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.card {
+  width: $card-width;
+  height: $card-height;
+  background-image: url("/src/card-flip-card-image.png");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+  color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &.flipped {
+    background-color: $card-flipped-bg;
+    background-image: none;
+    color: white;
+  }
+}
+
+#attempts {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button {
+  background-color: $button-bg-color;
+  color: $button-text-color;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
