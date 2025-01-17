@@ -317,7 +317,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve"
-  },  "repository": {
+  },
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/RyanWalker-FS/ProgramforWebApp.git"
   },
