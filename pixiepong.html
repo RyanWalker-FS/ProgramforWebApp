@@ -75,10 +75,10 @@
         circle.y += yv;
       });
       const borders = {
-        top: createBorder(0, 0, 800, 10, 0xfff000), // Top
-        right: createBorder(790, 0, 10, 800, 0x00fff0), // Right
-        bottom: createBorder(0, 790, 800, 10, 0xf000ff), // Bottom
-        left: createBorder(0, 0, 10, 800, 0xf0fff0), // Left
+        top: createBorder(0, 0, 800, 10, 0xff0000), // Top
+        right: createBorder(790, 0, 10, 800, 0xff0000), // Right
+        bottom: createBorder(0, 790, 800, 10, 0xff0000), // Bottom
+        left: createBorder(0, 0, 10, 800, 0xff0000), // Left
       };
       Object.values(borders).forEach((border) => app.stage.addChild(border));
       const bordersHit = {
