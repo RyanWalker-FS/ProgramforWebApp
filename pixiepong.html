@@ -11,148 +11,188 @@
     <script src="https://pixijs.download/release/pixi.min.js"></script>
     <!-- Our ES6 code goes here as a type="module" -->
     <script type="module">
-      // We first need to create a new PixiJS application instance
-      const app = new PIXI.Application();
-      // Now we need to call an asyncronous method on our PixiJS
-      // application called "init" which initializes our display
-      // using a defined width and height measured in pixels.
-      await app.init({
-        backgroundColor: "#3398b9",
-        width: 800,
-        height: 800,
-      });
-      // Now all we need to do is to tell PixiJS what HTMLElement
-      // in our DOM we want to show our game using a DOM helper
-      document.getElementById("game").appendChild(app.canvas);
+            // We first need to create a new PixiJS application instance
+            const app = new PIXI.Application();
+            // Now we need to call an asyncronous method on our PixiJS
+            // application called "init" which initializes our display
+            // using a defined width and height measured in pixels.
+            await app.init({
+              backgroundColor: "#3398b9",
+              width: 800,
+              height: 800,
+            });
+            // Now all we need to do is to tell PixiJS what HTMLElement
+            // in our DOM we want to show our game using a DOM helper
+            document.getElementById("game").appendChild(app.canvas);
 
-      // First lets create ourselves a new graphic instance to
-      // represent our "cirlce" on the screen and assign it to
-      // a variable called "circle"
-      const circle = new PIXI.Graphics();
-      // Now we can set it's "fill" color to a nice fun yellow!
-      circle.beginFill("#f5ef42");
-      // Now we need to tell Pixi to draw an actual circle
-      // the three arguments we need are: X, Y, and radius size
-      // all measured in pixels. So this cirlce will start at
-      // zero X and zero Y coordinates with a 5 pixel radius
-      circle.drawCircle(5, 5, 5);
-      // Now we need to call an end to our "fill" that we started
-      // earlier with our "beginFill" call with the "endFill" call
-      circle.endFill();
-      // Now we need to tell our circle where to "spawn" on our
-      // game display by setting it's "view" x and y coordinates
-      circle.x = 450;
-      circle.y = 400;
-      // This will determine our circle's "velocity" and direction
-      let xv = 1.5;
-      let yv = 1.5;
+            // First lets create ourselves a new graphic instance to
+            // represent our "cirlce" on the screen and assign it to
+            // a variable called "circle"
+            const circle = new PIXI.Graphics();
+            // Now we can set it's "fill" color to a nice fun yellow!
+            circle.beginFill("#f5ef42");
+            // Now we need to tell Pixi to draw an actual circle
+            // the three arguments we need are: X, Y, and radius size
+            // all measured in pixels. So this cirlce will start at
+            // zero X and zero Y coordinates with a 5 pixel radius
+            circle.drawCircle(5, 5, 5);
+            // Now we need to call an end to our "fill" that we started
+            // earlier with our "beginFill" call with the "endFill" call
+            circle.endFill();
+            // Now we need to tell our circle where to "spawn" on our
+            // game display by setting it's "view" x and y coordinates
+            circle.x = 450;
+            circle.y = 400;
+            // This will determine our circle's "velocity" and direction
+            let xv = 1.5;
+            let yv = 1.5;
 
-      // Now finally!!! Let's add our cirlce to our game stage
-      // to see what happens using the addChild call
-      app.stage.addChild(circle);
-      // Now what we need to do is to add a refresh engine that
-      // powers our graphic's movement. We can use Pixi's built
+            // Now finally!!! Let's add our cirlce to our game stage
+            // to see what happens using the addChild call
+            app.stage.addChild(circle);
+            // Now what we need to do is to add a refresh engine that
+            // powers our graphic's movement. We can use Pixi's built
 
-      // in "ticker" feature like so...
-      app.ticker.add(() => {
-        // All of the following code will be executed on every
-        // "frame" update/refresh
-        // If our circle exceeds 800px or is less than zero
-        if (circle.x >= 800 || circle.x <= 0) {
-          // This will flip a postitive number to a negative
-          // as well as a negative to a positive due to the
-          // "math of signs" property in mathematics which
-          // states two negatives equals a positive
-          xv = -xv;
-        }
+            // in "ticker" feature like so...
+            app.ticker.add(() => {
+              // All of the following code will be executed on every
+              // "frame" update/refresh
+              // If our circle exceeds 800px or is less than zero
+              if (circle.x >= 800 || circle.x <= 0) {
+                // This will flip a postitive number to a negative
+                // as well as a negative to a positive due to the
+                // "math of signs" property in mathematics which
+                // states two negatives equals a positive
+                xv = -xv;
+              }
 
-        // Rinse and repeat for our Y axis
-        if (circle.y >= 800 || circle.y <= 0) {
-          yv = -yv;
-        }
-        // Lets move our circle's by their direction/velocity
-        circle.x += xv;
-        circle.y += yv;
-      });
-      const borders = {
-        top: createBorder(0, 0, 800, 10, 0xfff000), // Top
-        right: createBorder(790, 0, 10, 800, 0x00fff0), // Right
-        bottom: createBorder(0, 790, 800, 10, 0xf000ff), // Bottom
-        left: createBorder(0, 0, 10, 800, 0xf0fff0), // Left
-      };
-      Object.values(borders).forEach((border) => app.stage.addChild(border));
-      const bordersHit = {
-        top: false,
-        right: false,
-        bottom: false,
-        left: false,
-      };
+              // Rinse and repeat for our Y axis
+              if (circle.y >= 800 || circle.y <= 0) {
+                yv = -yv;
+              }
+              // Lets move our circle's by their direction/velocity
+              circle.x += xv;
+              circle.y += yv;
+            });
+            const borders = {
+              top: createBorder(0, 0, 800, 10, 0xfff000), // Top
+              right: createBorder(790, 0, 10, 800, 0x00fff0), // Right
+              bottom: createBorder(0, 790, 800, 10, 0xf000ff), // Bottom
+              left: createBorder(0, 0, 10, 800, 0xf0fff0), // Left
+            };
+            Object.values(borders).forEach((border) => app.stage.addChild(border));
+            const bordersHit = {
+              top: false,
+              right: false,
+              bottom: false,
+              left: false,
+            };
 
-      // Create a Promise for game completion
-      const gameCompleted = new Promise((resolve) => {
-        app.ticker.add(() => {
-          // Move the circle
-          circle.x += xv;
-          circle.y += yv;
+            // Create a Promise for game completion
+            const gameCompleted = new Promise((resolve) => {
+              app.ticker.add(() => {
+                // Move the circle
+                circle.x += xv;
+                circle.y += yv;
 
-          // Check collisions with borders
-          if (circle.y <= 10 && !bordersHit.top) {
-            bordersHit.top = true;
-            changeBorderColor(borders.top, 0xffffff); // Change to white
-          }
-          if (circle.y >= 790 && !bordersHit.bottom) {
-            bordersHit.bottom = true;
-            changeBorderColor(borders.bottom, 0xffffff);
-          }
-          if (circle.x <= 10 && !bordersHit.left) {
-            bordersHit.left = true;
-            changeBorderColor(borders.left, 0xffffff);
-          }
-          if (circle.x >= 790 && !bordersHit.right) {
-            bordersHit.right = true;
-            changeBorderColor(borders.right, 0xffffff);
-          }
+                // Check collisions with borders
+                if (circle.y <= 10 && !bordersHit.top) {
+                  bordersHit.top = true;
+                  changeBorderColor(borders.top, 0xffffff); // Change to white
+                }
+                if (circle.y >= 790 && !bordersHit.bottom) {
+                  bordersHit.bottom = true;
+                  changeBorderColor(borders.bottom, 0xffffff);
+                }
+                if (circle.x <= 10 && !bordersHit.left) {
+                  bordersHit.left = true;
+                  changeBorderColor(borders.left, 0xffffff);
+                }
+                if (circle.x >= 790 && !bordersHit.right) {
+                  bordersHit.right = true;
+                  changeBorderColor(borders.right, 0xffffff);
+                }
 
-          // Reverse direction upon collision
-          if (circle.x <= 10 || circle.x >= 790) xv = -xv;
-          if (circle.y <= 10 || circle.y >= 790) yv = -yv;
+                // Reverse direction upon collision
+                if (circle.x <= 10 || circle.x >= 790) xv = -xv;
+                if (circle.y <= 10 || circle.y >= 790) yv = -yv;
 
-          // Check if all borders have been hit
-          if (Object.values(bordersHit).every((hit) => hit)) {
-            resolve();
-          }
-        });
-      });
+                // Check if all borders have been hit
+                if (Object.values(bordersHit).every((hit) => hit)) {
+                  resolve();
+                }
+              });
+            });
 
-      // Handle game completion
-      gameCompleted
-        .then(() => {
-          // Stop the game
-          app.ticker.stop();
-          alert("Game Over! All borders have been hit!");
-        })
-        .catch((error) => {
-          // Handle any potential errors
-          console.error("An error occurred:", error);
-        });
+            // Handle game completion
+            gameCompleted
+              .then(() => {
+                // Stop the game
+                app.ticker.stop();
+                alert("Game Over! All borders have been hit!");
+              })
+              .catch((error) => {
+                // Handle any potential errors
+                console.error("An error occurred:", error);
+              });
 
-      function createBorder(x, y, width, height, color) {
-        const border = new PIXI.Graphics();
-        border.beginFill(color);
-        border.drawRect(0, 0, width, height);
-        border.endFill();
-        border.x = x;
-        border.y = y;
-        return border;
-      }
+            function createBorder(x, y, width, height, color) {
+              const border = new PIXI.Graphics();
+              border.beginFill(color);
+              border.drawRect(0, 0, width, height);
+              border.endFill();
+              border.x = x;
+              border.y = y;
+              return border;
+            }
 
-      // Function to change border color
-      function changeBorderColor(border, color) {
-        border.clear();
-        border.beginFill(color);
-        border.drawRect(0, 0, border.width, border.height);
-        border.endFill();
-      }
+            // Function to change border color
+            function changeBorderColor(border, color) {
+              border.clear();
+              border.beginFill(color);
+              border.drawRect(0, 0, border.width, border.height);
+              border.endFill();
+            }
+      <<<<<<< Updated upstream
+      =======
+
+            // Handle game completion
+            gameCompleted
+              .then(() => {
+                // Stop the game
+                app.ticker.stop();
+                alert("Game Over! You nailed them all!");
+              })
+              .catch((error) => {
+                // Handle any potential errors
+                console.error("An error occurred:", error);
+              });
+
+            // Function to change border color to green
+            function changeBorderColorToGreen(border) {
+              changeBorderColor(border, 0x00ff00);
+            }
+
+            // ...
+
+            // Handle border hit
+            if (circle.y - circleRadius <= borderWidth && !bordersHit.top) {
+              bordersHit.top = true;
+              changeBorderColorToGreen(borders.top);
+            }
+            if (circle.y + circleRadius >= 800 - borderWidth && !bordersHit.bottom) {
+              bordersHit.bottom = true;
+              changeBorderColorToGreen(borders.bottom);
+            }
+            if (circle.x - circleRadius <= borderWidth && !bordersHit.left) {
+              bordersHit.left = true;
+              changeBorderColorToGreen(borders.left);
+            }
+            if (circle.x + circleRadius >= 800 - borderWidth && !bordersHit.right) {
+              bordersHit.right = true;
+              changeBorderColorToGreen(borders.right);
+            }
+      >>>>>>> Stashed changes
     </script>
   </body>
 </html>
