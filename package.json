@@ -1,0 +1,23 @@
+{
+  "name": "programforwebapp",
+  "version": "1.0.0",
+  "description": "main | |--Car-Finder |--Card-Match |--Pixie-Pong",
+  "main": "fn.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanWalker-FS/ProgramforWebApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyanWalker-FS/ProgramforWebApp/issues"
+  },
+  "homepage": "https://github.com/RyanWalker-FS/ProgramforWebApp#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
